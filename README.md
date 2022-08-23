@@ -63,6 +63,38 @@ Each subclass of the ViewGroup class provides a unique way to display the views 
 - [List View](https://developer.android.com/guide/topics/ui/layout/listview): Displays a scrolling single column list.
 - [Grid View](https://developer.android.com/guide/topics/ui/layout/gridview): Displays a scrolling grid of columns and rows.
 
+### Constraint layout
+
+[ConstraintLayout](https://developer.android.com/training/constraint-layout) allows you to create large and complex layouts with a flat view hierarchy (no nested view groups). It's similar to RelativeLayout in that all views are laid out according to relationships between sibling views and the parent layout, but it's more flexible than RelativeLayout and easier to use with Android Studio's Layout Editor.
+
+## 3. Add feature on button click
+
+After make several `<EditText>`, we can get some data from user with button click. To doing this, each of EditText has their own id value. And then we can use input data from that EditText section. After enter any text into the input sections, you can find log on the `Logcat` window below.
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        btnApply.setOnClickListener{
+            val firstName = etFirstName.text.toString()
+            val lastName = etLastName.text.toString()
+            val birthDate = etBirthDate.text.toString()
+            val country = etCountry.text.toString()
+            Log.d("MainActivity", "$firstName $lastName, born on $birthDate, from $country just applied to the formular.")
+        }
+    }
+}
+```
+
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/39740066/186049223-6307eaf8-7d08-4b15-8870-491eaed8f437.png">
+
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/39740066/186049122-d5f38ae1-6ceb-490e-a560-461132f430c8.png">
+
+To import `btnApply` with `kotlinx.android.synthetic.main.activity_main.*`, you need to add `id 'kotlin-android-extensions'` on `gradle.build`.
+
 ## References
 * [1] https://developer.android.com/guide/components/activities/intro-activities
 * [2] https://developer.android.com/guide/components/activities/tasks-and-back-stack
