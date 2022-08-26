@@ -13,10 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var count = 0
-        btnCount.setOnClickListener{
-            count++
-            tvCount.text = "Let's count together: $count"
+        btnAdd.setOnClickListener {
+            val firstNumber = etFirstNumber.text.toString().toInt()
+            val secondNumber = etSecondNumber.text.toString().toInt()
+            val result = firstNumber + secondNumber
+            tvResult.text = result.toString()
         }
     }
 }
