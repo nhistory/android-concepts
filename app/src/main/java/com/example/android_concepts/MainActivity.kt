@@ -13,12 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnApply.setOnClickListener{
-            val firstName = etFirstName.text.toString()
-            val lastName = etLastName.text.toString()
-            val birthDate = etBirthDate.text.toString()
-            val country = etCountry.text.toString()
-            Log.d("MainActivity", "$firstName $lastName, born on $birthDate, from $country just applied to the formular.")
+        var count = 0
+        btnCount.setOnClickListener{
+            count++
+            tvCount.text = "Let's count together: $count"
         }
     }
 }
