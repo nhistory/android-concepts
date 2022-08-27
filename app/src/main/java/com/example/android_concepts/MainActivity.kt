@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.RadioButton
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -13,8 +14,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnAddImage.setOnClickListener {
-            ivImage.setImageResource(R.drawable.img1)
+        btnOrder.setOnClickListener {
+           val checkedMeatRadioButtonId = rgMeat.checkedRadioButtonId
+           val meat = findViewById<RadioButton>(checkedMeatRadioButtonId)
+           val cheese = cbCheese.isChecked
+           val onions = cbOnions.isChecked
+           val salad = cbSalad.isChecked
+           val orderString = "You ordered a burger with:\n" +
+                   "${meat.text}" +
+                   (if(cheese) "\nCheese" else "") +
+                   (if(onions) "\nOnions" else "") +
+                   (if(salad) "\nSalad" else "")
+           tvOrder.text = orderString
+
+
         }
     }
 }
