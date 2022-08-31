@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.RadioButton
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.custom_toast.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,20 +16,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnOrder.setOnClickListener {
-           val checkedMeatRadioButtonId = rgMeat.checkedRadioButtonId
-           val meat = findViewById<RadioButton>(checkedMeatRadioButtonId)
-           val cheese = cbCheese.isChecked
-           val onions = cbOnions.isChecked
-           val salad = cbSalad.isChecked
-           val orderString = "You ordered a burger with:\n" +
-                   "${meat.text}" +
-                   (if(cheese) "\nCheese" else "") +
-                   (if(onions) "\nOnions" else "") +
-                   (if(salad) "\nSalad" else "")
-           tvOrder.text = orderString
+        btnShowToast.setOnClickListener {
 
-
+            Toast(this).apply {
+                duration = Toast.LENGTH_LONG
+                view = layoutInflater.inflate(R.layout.custom_toast, clToast)
+                show()
+            }
         }
+
     }
 }
