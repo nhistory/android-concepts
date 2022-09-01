@@ -95,8 +95,30 @@ class MainActivity : AppCompatActivity() {
 
 To import `btnApply` with `kotlinx.android.synthetic.main.activity_main.*`, you need to add `id 'kotlin-android-extensions'` on `gradle.build`.
 
+## Android Context
+
+What is Android context?
+
+Definition. it's the context of current state of the application/object. It lets newly-created objects understand what has been going on. Typically, you call it to get information regarding another part of your program (activity and package/application).
+
+If we want to move other activity, `Context` will help show up new xml file with activity. For example, `Intent` is a one of the context method to show what is the intention of next activity like below. 
+
+```kotlin
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        btnOpenActivity.setOnClickListener {
+            Intent(this, SecondActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+    }
+```
+
 ## References
 * [1] https://developer.android.com/guide/components/activities/intro-activities
 * [2] https://developer.android.com/guide/components/activities/tasks-and-back-stack
 * [3] https://developer.android.com/reference/android/app/Activity#ActivityLifecycle
 * [4] https://developer.android.com/guide/topics/ui/declaring-layout#kotlin
+* [5] https://www.geeksforgeeks.org/what-is-context-in-android/
